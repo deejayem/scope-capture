@@ -76,6 +76,9 @@
   ([expr] (spy-emit nil expr &env &form))
   ([opts expr] (spy-emit opts expr &env &form)))
 
+(defn read-sc-spy [form]
+  `(sc.api/spy ~form))
+
 (def ^:private spyqt-opts
   `{:sc/spy-ep-post-eval-logger sc.api.logging/log-spy-ep-post-eval--quiet})
 
@@ -129,6 +132,9 @@
   ([] (brk-emit nil nil &env &form))
   ([expr] (brk-emit nil expr &env &form))
   ([opts expr] (brk-emit opts expr &env &form)))
+
+(defn read-sc-brk [form]
+  `(sc.api/brk ~form))
 
 (def ^:private brkqt-opts
   `{:sc/brk-ep-post-eval-logger sc.api.logging/log-brk-ep-post-eval--quiet})
